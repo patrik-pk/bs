@@ -1,0 +1,41 @@
+.info {
+  padding-top: 50px;
+  padding-bottom: 70px;
+}
+
+.info-title {
+  font-size: 30px;
+  color: #088ca5;
+}
+
+.info-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 50px;
+  margin-top: 30px;
+
+  @include sm {
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 30px;
+  }
+}
+
+.info-content-left,
+.info-content-right {
+  p {
+    margin-bottom: 30px;
+    font-size: 14px;
+    line-height: 26px;
+    color: #515151;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.info-content-left {
+}
+
+.info-content-right {
+}

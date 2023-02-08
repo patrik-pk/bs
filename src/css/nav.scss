@@ -1,0 +1,149 @@
+$navHeight: 100px;
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: $navHeight;
+  background-color: $darkGray;
+  z-index: 1000;
+}
+
+.nav-links {
+  display: flex;
+
+  @include sm {
+    display: none;
+  }
+}
+
+.nav-link,
+.expanded-menu-link {
+  color: white;
+  text-transform: uppercase;
+}
+
+.nav-link {
+  position: relative;
+  margin-right: 30px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:hover {
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 1px;
+    background-color: white;
+    transition: 300ms width;
+  }
+}
+
+.nav-title {
+  display: none;
+  font-size: 24px;
+  color: white;
+
+  @include sm {
+    display: block;
+  }
+}
+
+.nav-expand {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: $navHeight;
+  height: $navHeight;
+  background-color: black;
+  z-index: 100;
+  cursor: pointer;
+
+  @include sm {
+    display: block;
+  }
+
+  &.active {
+    span {
+      &:first-child {
+        width: 40%;
+        transform: translateX(-50%) translateY(-50%) rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:last-child {
+        width: 40%;
+        transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+      }
+    }
+  }
+
+  span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 50%;
+    height: 4px;
+    border-radius: 10px;
+    background-color: white;
+    transition: 300ms all;
+
+    &:first-child {
+      transform: translateX(-50%) translateY(calc(-50% - 12px));
+    }
+
+    &:last-child {
+      transform: translateX(-50%) translateY(calc(-50% + 12px));
+    }
+  }
+}
+
+.expanded-menu {
+  position: fixed;
+  top: 0;
+  left: -100vw;
+  width: 100vw;
+  height: 100vh;
+  background-color: $darkGray;
+  transition: 300ms all;
+  z-index: 50;
+
+  &.active {
+    left: 0;
+  }
+}
+
+.expanded-menu-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.expanded-menu-link {
+  width: 100%;
+  padding: 30px 30px;
+  transition: 300ms all;
+
+  &:hover {
+    background-color: black;
+  }
+}

@@ -1,0 +1,21 @@
+@import 'reset';
+@import 'media-queries';
+@import 'colors';
+
+@import 'nav';
+@import 'showcase';
+@import 'reference';
+@import 'info';
+@import 'carousel';
+
+html,
+body {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.4;
+  font-size: 16px;
+}
+
+.container {
+  padding-left: 10%;
+  padding-right: 10%;
+}
